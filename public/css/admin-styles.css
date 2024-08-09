@@ -1,0 +1,212 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #a8d5e2, #f6f6f6);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #88c2d6;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 2px solid #76b0c4;
+    flex-shrink: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+form input, form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    flex: 1 1 200px;
+}
+
+form label {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+}
+
+form label input {
+    margin-left: 10px;
+}
+
+form button {
+    background-color: #88c2d6;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Montserrat', Arial, sans-serif;
+    flex: 1 1 100%;
+}
+
+form button:hover {
+    background-color: #76b0c4;
+}
+
+.book-list, .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book-item, .user-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-item img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.book-item .edit-button, .book-item .delete-button, .user-item .view-books-button {
+    background-color: #88c2d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.book-item .delete-button {
+    background-color: #ff6b6b;
+}
+
+.book-item .edit-button:hover, .user-item .view-books-button:hover {
+    background-color: #76b0c4;
+}
+
+.book-item .delete-button:hover {
+    background-color: #e55a5a;
+}
+
+footer {
+    background-color: #88c2d6;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 2px solid #76b0c4;
+    flex-shrink: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content form input, .modal-content form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.modal-content form button {
+    background-color: #88c2d6;
+    color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.modal-content form button:hover {
+    background-color: #76b0c4;
+}

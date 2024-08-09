@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ - Книжный магазин</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Режим администратора</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="books-link">Книги</a></li>
+                <li><a href="#" id="users-link">Пользователи</a></li>
+                <li><a href="#" id="logout-link">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="books-container">
+            <h2>Управление книгами</h2>
+            <form id="book-form">
+                <input type="text" id="title" placeholder="Название" required>
+                <input type="text" id="author" placeholder="Автор" required>
+                <input type="text" id="image" placeholder="URL изображения" required>
+                <input type="text" id="description" placeholder="Описание" required>
+                <input type="text" id="price" placeholder="Цена" required>
+                <input type="number" id="year" placeholder="Год" required>
+                <input type="text" id="category" placeholder="Категория" required>
+                <label for="available">Доступно</label>
+                <input type="checkbox" id="available" checked>
+                <button type="submit">Добавить книгу</button>
+            </form>
+            <div id="book-list" class="book-list">
+                <!-- Книжные элементы будут добавлены сюда динамически -->
+            </div>
+        </div>
+        <div id="users-container" style="display: none;">
+            <h2>Зарегистрированные пользователи</h2>
+            <div id="user-list" class="user-list">
+                <!-- Элементы пользователей будут добавлены сюда динамически -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Книжный магазин</p>
+    </footer>
+
+    <!-- Модальное окно для книг пользователя -->
+    <div id="user-books-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-user-books">&times;</span>
+            <h2>Книги пользователя</h2>
+            <div id="user-books-list" class="user-books-list">
+                <!-- Книги пользователя будут добавлены сюда динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования книги -->
+    <div id="edit-book-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-edit-book">&times;</span>
+            <h2>Редактировать книгу</h2>
+            <form id="edit-book-form">
+                <input type="hidden" id="edit-book-id">
+                <input type="text" id="edit-title" placeholder="Название" required>
+                <input type="text" id="edit-author" placeholder="Автор" required>
+                <input type="text" id="edit-image" placeholder="URL изображения" required>
+                <input type="text" id="edit-description" placeholder="Описание" required>
+                <input type="text" id="edit-price" placeholder="Цена" required>
+                <input type="number" id="edit-year" placeholder="Год" required>
+                <input type="text" id="edit-category" placeholder="Категория" required>
+                <label for="edit-available">Доступно</label>
+                <input type="checkbox" id="edit-available">
+                <button type="submit">Сохранить изменения</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Проверка, авторизован ли пользователь
+        fetch('/api/check-auth')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.authenticated || data.user.username !== 'admin') {
+                    alert('Неавторизовано! Переход на главную страницу.');
+                    window.location.href = 'index.html';
+                }
+            });
+
+        // Функциональность кнопки выхода
+        document.getElementById('logout-link').addEventListener('click', () => {
+            fetch('/api/logout', {
+                method: 'POST'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+
+    <script src="js/admin-scripts.js"></script>
+</body>
+</html>

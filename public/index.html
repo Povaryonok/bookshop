@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книжный магазин</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Книжный магазин</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="home-link" class="nav-link">Главная</a></li>
+                <li><a href="#" id="books-link" class="nav-link">Книги</a></li>
+                <li><a href="admin.html" id="admin-link" class="nav-link" style="display: none;">Админ</a></li>
+                <li><a href="#" id="login-link" class="nav-link">Войти</a></li>
+                <li><a href="#" id="logout-link" class="nav-link" style="display: none;">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Наши книги</h2>
+        <div>
+            <label for="sort">Сортировать по:</label>
+            <select id="sort" name="sort">
+                <option value="category">Категория</option>
+                <option value="author">Автор</option>
+                <option value="year">Год</option>
+            </select>
+        </div>
+        <div id="book-list" class="book-list">
+            <!-- Книжные элементы будут добавлены сюда динамически -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Книжный магазин</p>
+    </footer>
+
+    <!-- Модальное окно для входа/регистрации -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="login-form">
+                <h2>Войти</h2>
+                <form id="login">
+                    <input type="text" id="login-username" placeholder="Имя пользователя" required>
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                    <button type="submit">Войти</button>
+                </form>
+                <p>Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+            </div>
+            <div id="register-form" style="display: none;">
+                <h2>Зарегистрироваться</h2>
+                <form id="register">
+                    <input type="text" id="register-username" placeholder="Имя пользователя" required>
+                    <input type="email" id="register-email" placeholder="Электронная почта" required>
+                    <input type="password" id="register-password" placeholder="Пароль" required>
+                    <input type="password" id="register-confirm-password" placeholder="Подтвердите пароль" required>
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+                <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для покупки/аренды -->
+    <div id="transaction-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-transaction">&times;</span>
+            <h2>Покупка или аренда</h2>
+            <div id="transaction-options">
+                <button id="purchase-button">Купить</button>
+                <button id="rent-button">Арендовать</button>
+            </div>
+            <div id="rent-options" style="display: none;">
+                <form id="rent-form">
+                    <label>
+                        <input type="radio" name="duration" value="2_weeks" required> 2 недели
+                    </label>
+                    <label>
+                        <input type="radio" name="duration" value="1_month" required> 1 месяц
+                    </label>
+                    <label>
+                        <input type="radio" name="duration" value="3_months" required> 3 месяца
+                    </label>
+                    <button type="submit">Подтвердить аренду</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
